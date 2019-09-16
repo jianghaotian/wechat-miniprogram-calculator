@@ -145,22 +145,23 @@ Page({
           case '*':
           case '/':
           case '=':
-            if (that.data.storageNum == 0) {
-              that.data.storageNum = that.data.show;
-              that.data.operator = btn;
-            } else {
-              if (that.data.operator == '+') {
-                that.data.show = Number(that.data.storageNum) + Number(that.data.show)
-              } else if (that.data.operator == '-') {
-                that.data.show = Number(that.data.storageNum) - Number(that.data.show)
-              } else if (that.data.operator == '*') {
-                that.data.show = Number(that.data.storageNum) * Number(that.data.show)
-              } else if (that.data.operator == '/') {
-                that.data.show = Number(that.data.storageNum) / Number(that.data.show)
-              }
-              that.data.storageNum = that.data.show;
-              that.data.operator = btn;
+            if (that.data.operator == '+') {
+              that.data.show = Number(that.data.storageNum) + Number(that.data.show)
+            } else if (that.data.operator == '-') {
+              that.data.show = Number(that.data.storageNum) - Number(that.data.show)
+            } else if (that.data.operator == '*') {
+
+              console.log(Number(that.data.storageNum) * Number(that.data.show));
+              console.log(Number(that.data.storageNum));
+              console.log(Number(that.data.show));
+
+              that.data.show = Number(that.data.storageNum) * Number(that.data.show)
+            } else if (that.data.operator == '/') {
+              that.data.show = Number(that.data.storageNum) / Number(that.data.show)
             }
+            that.data.storageNum = that.data.show;
+            that.data.operator = btn;
+            
             that.data.onceNum = true;
             break;
 
@@ -180,6 +181,8 @@ Page({
             break;
         }
         that.data.show = that.data.show.toString();
+        console.log(that.data.operator);
+
       }
 
       let decimal = 0;
@@ -212,7 +215,7 @@ Page({
       that.data.error = false;
     }
 
-    if (that.data.show == 'Infinity') {
+    if (that.data.show == 'Infinity' || that.data.show == 'NaN') {
       that.data.show = '错误!';
       that.data.error = true;
     }
